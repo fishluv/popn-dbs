@@ -20,15 +20,55 @@ select genre_romantrans, remywiki_title, artist from songs where genre_romantran
 | HYPER CHINESE POP  | Toukarenjou                 | TЁЯRA              |
 
 ```sql
-select c.difficulty, c.level, s.remywiki_title, s.artist, h.rating from charts c join songs s on c.song_id = s.id join hyrorre_charts h on c.hyrorre_page_path = h.page_path where s.artist like '%dj taka%' and c.level >= 42 and c.level <= 45 order by c.level, c.difficulty;
+select genre_romantrans, remywiki_title, artist from songs where artist like '%seiya%';
 ```
-| difficulty | level |   remywiki_title   |                       artist                       |    rating     |
-|------------|-------|--------------------|----------------------------------------------------|---------------|
-| h          | 42    | True Blue          | dj TAKA feat.AiMEE                                 | 強(+0.594±0.4) |
-| h          | 42    | Triple Counter     | DJ YOSHITAKA meets dj TAKA                         | 弱(-0.706±0.5) |
-| ex         | 43    | Memories (TAKA)    | dj TAKA                                            | 中(+0.118±0.4) |
-| h          | 43    | Trill auf G        | BEMANI Sound Team "dj TAKA"                        | 中(+0.059±0.7) |
-| h          | 43    | Triple Cross       | BEMANI Sound Team "dj TAKA & DJ YOSHITAKA & SYUNN" |               |
-| ex         | 44    | LOVE2 Sugar        | dj TAKA feat.のりあ                                   | 中(-0.391±0.6) |
-| h          | 44    | Elemental Creation | dj TAKA meets DJ YOSHITAKA                         | 強(+0.470±0.5) |
-| ex         | 45    | Shock Me           | dj TAKA feat.Fuuuːka                               | 弱(-0.530±0.5) |
+|     genre_romantrans      |           remywiki_title           |              artist              |
+|---------------------------|------------------------------------|----------------------------------|
+| NIGHT OUT                 | Toumeina manicure                  | Kiyommy+Seiya                    |
+| ENKA REMIX                | Oedo hanafubuki TEYAN-day MIX      | 高田香里 ReMIXed by SEIYA            |
+| NIGHT OUT REMIX           | Toumeina manicure moonlit mix      | Kiyommy+Seiya                    |
+| HEART                     | Pink Rose                          | Kiyommy+Seiya                    |
+| PRIDE                     | Tenohira no kakumei                | Kiyommy+Seiya                    |
+| COSMIC                    | SCI-FI                             | SEIYA + A.I.units                |
+| GIN ROCK                  | O-KU-NI                            | seiya-murai feat.楽芭              |
+| A.I.DATE POP              | Sumidagawa karenka                 | seiya-murai feat.ALT             |
+| A.I. TETSUDOL             | Linear Locomotive Love             | seiya-murai feat.ALT             |
+| EPILOGUE                  | Soshite sekai wa ongaku ni michita | wac + seiya                      |
+| KEYBOARDS POP             | PEACEFUL PLANET PARTY              | seiya-murai + A.I.Units          |
+| SWEETRONICA               | Seiten Bon Voyage                  | TOMOSUKE × seiya-murai feat. ALT |
+| REGRETS FEELING           | Smile replay                       | seiya-murai feat. 秋成             |
+| Mohair                    | Mohair                             | seiya-murai feat.藤野マナミ           |
+| Limone di macchina        | Limone di macchina                 | BEMANI Sound Team "seiya-murai"  |
+| Kimi to watashi no ongaku | Kimi to watashi no ongaku          | seiya-murai feat. ALT            |
+| Tabun, kiss kurai shiteru | Tabun, kiss kurai shiteru          | Kiyommy+Seiya                    |
+| Watchdog The Sleeper      | Watchdog The Sleeper               | BEMANI Sound Team "seiya-murai"  |
+
+```sql
+select c.difficulty, c.level, s.remywiki_title, s.genre_romantrans, h.notes from charts c join songs s on c.song_id = s.id join hyrorre_charts h on c.hyrorre_page_path = h.page_path where h.notes >= 1537 and c.level < 49 order by c.level, c.difficulty;
+```
+| difficulty | level | remywiki_title | genre_romantrans | notes |
+|------------|-------|----------------|------------------|-------|
+| ex         | 47    | Hentai trilogy | CORE ROCK        | 1546  |
+| ex         | 48    | Setsujou danka | HIP ROCK 3       | 1550  |
+| ex         | 48    | Roman          | HIP ROCK 4       | 1604  |
+
+```sql
+select distinct s.remywiki_title, s.genre_romantrans, h.duration from charts c join songs s on c.song_id = s.id join hyrorre_charts h on c.hyrorre_page_path = h.page_path order by h.duration_sec desc limit 15;
+```
+|               remywiki_title                |              genre_romantrans               | duration |
+|---------------------------------------------|---------------------------------------------|----------|
+| Help me, ERINNNNNN!! -VENUS mix-            | Help me, ERINNNNNN!! -VENUS mix-            | 2:39     |
+| Pop'n Xmas 2004 ~denshi no utagoe~          | Xmas PRESENTS                               | 2:33     |
+| SDVX REMIX SELECTION for pop'n music vol.01 | SDVX REMIX SELECTION for pop'n music vol.01 | 2:33     |
+| HYMN                                        | HYMN                                        | 2:31     |
+| Sayonara no uta                             | Sayonara no uta                             | 2:30     |
+| Homesick Pt.2&3                             | SOFT ROCK LONG                              | 2:26     |
+| DDR MEGAMIX                                 | DDR                                         | 2:26     |
+| Un Happy Heart                              | Un Happy Heart                              | 2:25     |
+| Pop'n Xmas 2004 ~denshi no utagoe~          | Xmas PRESENTS                               | 2:24     |
+| Romance (Kazuyoshi Maruyama)                | LATIN ENKA                                  | 2:22     |
+| Neu                                         | NIENTE                                      | 2:21     |
+| Ongaku                                      | SILENT                                      | 2:21     |
+| Kouen(Live Version)                         | Kouen(Live Version)                         | 2:20     |
+| Tsukiyuki ni mau hana no youni              | FOREST SNOW                                 | 2:19     |
+| NAMINORI www.                               | LOUD BEACH                                  | 2:19     |
