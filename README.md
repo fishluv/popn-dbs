@@ -8,6 +8,7 @@ from charts
 where level >= 35
 group by level;
 ```
+
 | level | charts |
 |-------|--------|
 | 35    | 107    |
@@ -41,6 +42,7 @@ group by genre_romantrans
 having count > 1
 order by count desc, genre_romantrans;
 ```
+
 | genre_romantrans | count |
 |------------------|-------|
 | HAPPY HARDCORE   | 6     |
@@ -76,6 +78,7 @@ select genre_romantrans, remywiki_title, artist
 from songs
 where genre_romantrans like 'hyper%';
 ```
+
 |  genre_romantrans  |       remywiki_title        |       artist       |
 |--------------------|-----------------------------|--------------------|
 | HYPER J-POP        | STARS                       | TЁЯRA              |
@@ -103,9 +106,11 @@ select distinct s.remywiki_title, s.genre_romantrans, h.duration
 from charts c
 join songs s on c.song_id = s.id
 join hyrorre_charts h on c.hyrorre_page_path = h.page_path
+where h.duration_sec is not null
 order by h.duration_sec desc
-limit 15;
+limit 10;
 ```
+
 |               remywiki_title                |              genre_romantrans               | duration |
 |---------------------------------------------|---------------------------------------------|----------|
 | Help me, ERINNNNNN!! -VENUS mix-            | Help me, ERINNNNNN!! -VENUS mix-            | 2:39     |
@@ -118,11 +123,27 @@ limit 15;
 | Un Happy Heart                              | Un Happy Heart                              | 2:25     |
 | Pop'n Xmas 2004 ~denshi no utagoe~          | Xmas PRESENTS                               | 2:24     |
 | Romance (Kazuyoshi Maruyama)                | LATIN ENKA                                  | 2:22     |
-| Neu                                         | NIENTE                                      | 2:21     |
-| Ongaku                                      | SILENT                                      | 2:21     |
-| Kouen(Live Version)                         | Kouen(Live Version)                         | 2:20     |
-| Tsukiyuki ni mau hana no youni              | FOREST SNOW                                 | 2:19     |
-| NAMINORI www.                               | LOUD BEACH                                  | 2:19     |
+
+### ...and shortest songs
+
+```sql
+...
+order by h.duration_sec
+limit 10;
+```
+
+|      remywiki_title       | genre_romantrans | duration |
+|---------------------------|------------------|----------|
+| Twin Bee ~Generation X~   | EUROBEAT         | 1:11     |
+| Happy man                 | GUITAR PUNK      | 1:12     |
+| Sweaty Guys               | KG               | 1:14     |
+| LINN 1999                 | HARENTI TECHNO   | 1:14     |
+| 321 STARS                 | TECHNO POP       | 1:19     |
+| S.F.M                     | MELODIC CORE     | 1:19     |
+| ZANZIBAR                  | TRIBAL           | 1:20     |
+| KOUYOU                    | J-SOUL           | 1:20     |
+| 321 STARS                 | TECHNO POP       | 1:21     |
+| I REALLY WANT TO HURT YOU | POPS             | 1:22     |
 
 
 
@@ -138,6 +159,7 @@ and h.duration_sec is not null
 order by nps desc
 limit 10;
 ```
+
 |  nps   | notes | duration |      remywiki_title       |   genre_romantrans   | diff | level |
 |--------|-------|----------|---------------------------|----------------------|------|-------|
 | 16.091 | 1947  | 2:01     | Oto                       | Oto                  | ex   | 50    |
@@ -151,7 +173,7 @@ limit 10;
 | 14.387 | 1525  | 1:46     | Shuumatsu wo ou mono      | JUDGMENT             | ex   | 49    |
 | 14.294 | 1458  | 1:42     | Kodomo live               | WARABE STEP          | ex   | 48    |
 
-### ... and least dense charts (46+)
+### ...and least dense charts (46+)
 
 ```sql
 ...
@@ -159,6 +181,7 @@ and c.level >= 46
 order by nps
 limit 10;
 ```
+
 |  nps  | notes | duration |     remywiki_title      | genre_romantrans  | diff | level |
 |-------|-------|----------|-------------------------|-------------------|------|-------|
 | 5.802 | 528   | 1:31     | Maritare!               | CLASSIC 6         | ex   | 47    |
