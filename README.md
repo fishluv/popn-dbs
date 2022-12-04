@@ -194,3 +194,9 @@ limit 10;
 | 7.716 | 1034  | 2:14     | Popperz Chronicle       | Popperz Chronicle | h    | 46    |
 | 7.85  | 942   | 2:00     | School Life             | KESHIGOMU         | ex   | 46    |
 | 7.958 | 955   | 2:00     | Omoide wo arigatou      | CLASSIC 11        | ex   | 49    |
+
+# Acknowledgements
+
+Thanks to Nagato, without whose omnimix tools none of this would be possible.
+
+All data is sourced from [Remywiki](https://remywiki.com), [Hyrorre](https://popn.hyrorre.com), or elsewhere.
