@@ -83,7 +83,7 @@ with l as (select * from labels where record_type = 'song' and value = 'upper')
 select genre_romantrans, count(*) count
 from songs s
 left join l on s.id = l.record_id
-where l.record_id is null
+where l.record_id is null -- exclude uppers since they're duplicates
 group by genre_romantrans
 having count > 1
 order by count desc, genre_romantrans;
