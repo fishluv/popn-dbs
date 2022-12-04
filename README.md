@@ -47,6 +47,24 @@ limit 10;
 | 8.43410852713178 | 1088  | 2:09     | Geometric tea party           | Geometric tea party | h    | 47    |
 | 8.56603773584906 | 908   | 1:46     | Yakankou                      | Des-REGGAE          | ex   | 48    |
 
+```sql
+...
+order by nps desc
+limit 10;
+```
+|       nps        | notes | duration |      remywiki_title       |   genre_romantrans   | diff | level |
+|------------------|-------|----------|---------------------------|----------------------|------|-------|
+| 16.0909090909091 | 1947  | 2:01     | Oto                       | Oto                  | ex   | 50    |
+| 16.0366972477064 | 1748  | 1:49     | Schrodinger no neko       | TOY CONTEMPORARY     | ex   | 50    |
+| 15.5172413793103 | 1800  | 1:56     | ShinchoushinTION          | COREDUST BEAT        | ex   | 50    |
+| 14.9636363636364 | 1646  | 1:50     | MADSPEED kyoushintou      | MADSPEED kyoushintou | ex   | 49    |
+| 14.7851239669421 | 1789  | 2:01     | 25 o'clock the WORLD      | 25 o'clock the WORLD | ex   | 50    |
+| 14.7416666666667 | 1769  | 2:00     | Seimei no honoo matoite   | IMBOLC               | ex   | 50    |
+| 14.4715447154472 | 1780  | 2:03     | Shounen wa sora wo tadoru | MURAKUMO             | ex   | 50    |
+| 14.3937007874016 | 1828  | 2:07     | Tadoru kimi wo koete      | Tadoru kimi wo koete | ex   | 50    |
+| 14.3867924528302 | 1525  | 1:46     | Shuumatsu wo ou mono      | JUDGMENT             | ex   | 49    |
+| 14.2941176470588 | 1458  | 1:42     | Kodomo live               | WARABE STEP          | ex   | 48    |
+
 
 
 ```sql
