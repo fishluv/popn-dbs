@@ -24,30 +24,28 @@ where genre_romantrans like 'hyper%';
 
 
 ```sql
-select genre_romantrans, remywiki_title, artist
-from songs
-where artist like '%seiya%';
+select cast(h.notes as real) / h.duration_sec nps, h.notes, h.duration, s.remywiki_title, s.genre_romantrans, c.difficulty diff, c.level
+from charts c
+join songs s on c.song_id = s.id
+join hyrorre_charts h on c.hyrorre_page_path = h.page_path
+where h.notes is not null
+and h.duration_sec is not null
+and c.level >= 46
+order by nps
+limit 10;
 ```
-|     genre_romantrans      |           remywiki_title           |              artist              |
-|---------------------------|------------------------------------|----------------------------------|
-| NIGHT OUT                 | Toumeina manicure                  | Kiyommy+Seiya                    |
-| ENKA REMIX                | Oedo hanafubuki TEYAN-day MIX      | 高田香里 ReMIXed by SEIYA            |
-| NIGHT OUT REMIX           | Toumeina manicure moonlit mix      | Kiyommy+Seiya                    |
-| HEART                     | Pink Rose                          | Kiyommy+Seiya                    |
-| PRIDE                     | Tenohira no kakumei                | Kiyommy+Seiya                    |
-| COSMIC                    | SCI-FI                             | SEIYA + A.I.units                |
-| GIN ROCK                  | O-KU-NI                            | seiya-murai feat.楽芭              |
-| A.I.DATE POP              | Sumidagawa karenka                 | seiya-murai feat.ALT             |
-| A.I. TETSUDOL             | Linear Locomotive Love             | seiya-murai feat.ALT             |
-| EPILOGUE                  | Soshite sekai wa ongaku ni michita | wac + seiya                      |
-| KEYBOARDS POP             | PEACEFUL PLANET PARTY              | seiya-murai + A.I.Units          |
-| SWEETRONICA               | Seiten Bon Voyage                  | TOMOSUKE × seiya-murai feat. ALT |
-| REGRETS FEELING           | Smile replay                       | seiya-murai feat. 秋成             |
-| Mohair                    | Mohair                             | seiya-murai feat.藤野マナミ           |
-| Limone di macchina        | Limone di macchina                 | BEMANI Sound Team "seiya-murai"  |
-| Kimi to watashi no ongaku | Kimi to watashi no ongaku          | seiya-murai feat. ALT            |
-| Tabun, kiss kurai shiteru | Tabun, kiss kurai shiteru          | Kiyommy+Seiya                    |
-| Watchdog The Sleeper      | Watchdog The Sleeper               | BEMANI Sound Team "seiya-murai"  |
+|       nps        | notes | duration |        remywiki_title         |  genre_romantrans   | diff | level |
+|------------------|-------|----------|-------------------------------|---------------------|------|-------|
+| 5.8021978021978  | 528   | 1:31     | Maritare!                     | CLASSIC 6           | ex   | 47    |
+| 6.26890756302521 | 746   | 1:59     | Doll's sight                  | CLASSIC 10          | ex   | 48    |
+| 6.66942148760331 | 807   | 2:01     | Hell? or Heaven?              | CLASSIC 9           | ex   | 49    |
+| 7.05982905982906 | 826   | 1:57     | Eien toiu na no biyaku        | PYRAMID             | ex   | 47    |
+| 7.1123595505618  | 633   | 1:29     | GALAXY FOREST 11.6&12         | SCREEN              | ex   | 49    |
+| 7.95833333333333 | 955   | 2:00     | Omoide wo arigatou            | CLASSIC 11          | ex   | 49    |
+| 8.16129032258065 | 759   | 1:33     | Oedo hanafubuki TEYAN-day MIX | ENKA REMIX          | ex   | 47    |
+| 8.41780821917808 | 1229  | 2:26     | DDR MEGAMIX                   | DDR                 | ex   | 48    |
+| 8.43410852713178 | 1088  | 2:09     | Geometric tea party           | Geometric tea party | h    | 47    |
+| 8.56603773584906 | 908   | 1:46     | Yakankou                      | Des-REGGAE          | ex   | 48    |
 
 
 
