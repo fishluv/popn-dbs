@@ -24,51 +24,6 @@ where genre_romantrans like 'hyper%';
 
 
 ```sql
-select round(cast(h.notes as real) / h.duration_sec, 3) nps, h.notes, h.duration, s.remywiki_title, s.genre_romantrans, c.difficulty diff, c.level
-from charts c
-join songs s on c.song_id = s.id
-join hyrorre_charts h on c.hyrorre_page_path = h.page_path
-where h.notes is not null
-and h.duration_sec is not null
-and c.level >= 46
-order by nps
-limit 10;
-```
-|  nps  | notes | duration |     remywiki_title      | genre_romantrans  | diff | level |
-|-------|-------|----------|-------------------------|-------------------|------|-------|
-| 5.802 | 528   | 1:31     | Maritare!               | CLASSIC 6         | ex   | 47    |
-| 5.82  | 518   | 1:29     | GALAXY FOREST 11.6&12   | SCREEN            | h    | 46    |
-| 6.269 | 746   | 1:59     | Doll's sight            | CLASSIC 10        | ex   | 48    |
-| 6.669 | 807   | 2:01     | Hell? or Heaven?        | CLASSIC 9         | ex   | 49    |
-| 7.06  | 826   | 1:57     | Eien toiu na no biyaku  | PYRAMID           | ex   | 47    |
-| 7.112 | 633   | 1:29     | GALAXY FOREST 11.6&12   | SCREEN            | ex   | 49    |
-| 7.308 | 782   | 1:47     | Nishiazabu suidou kyoku | PERCUSSIVE 2      | ex   | 46    |
-| 7.716 | 1034  | 2:14     | Popperz Chronicle       | Popperz Chronicle | h    | 46    |
-| 7.85  | 942   | 2:00     | School Life             | KESHIGOMU         | ex   | 46    |
-| 7.958 | 955   | 2:00     | Omoide wo arigatou      | CLASSIC 11        | ex   | 49    |
-
-
-```sql
-...
-order by nps desc
-limit 10;
-```
-|  nps   | notes | duration |      remywiki_title       |   genre_romantrans   | diff | level |
-|--------|-------|----------|---------------------------|----------------------|------|-------|
-| 16.091 | 1947  | 2:01     | Oto                       | Oto                  | ex   | 50    |
-| 16.037 | 1748  | 1:49     | Schrodinger no neko       | TOY CONTEMPORARY     | ex   | 50    |
-| 15.517 | 1800  | 1:56     | ShinchoushinTION          | COREDUST BEAT        | ex   | 50    |
-| 14.964 | 1646  | 1:50     | MADSPEED kyoushintou      | MADSPEED kyoushintou | ex   | 49    |
-| 14.785 | 1789  | 2:01     | 25 o'clock the WORLD      | 25 o'clock the WORLD | ex   | 50    |
-| 14.742 | 1769  | 2:00     | Seimei no honoo matoite   | IMBOLC               | ex   | 50    |
-| 14.472 | 1780  | 2:03     | Shounen wa sora wo tadoru | MURAKUMO             | ex   | 50    |
-| 14.394 | 1828  | 2:07     | Tadoru kimi wo koete      | Tadoru kimi wo koete | ex   | 50    |
-| 14.387 | 1525  | 1:46     | Shuumatsu wo ou mono      | JUDGMENT             | ex   | 49    |
-| 14.294 | 1458  | 1:42     | Kodomo live               | WARABE STEP          | ex   | 48    |
-
-
-
-```sql
 select level, count(*) charts
 from charts
 where level >= 35
@@ -158,3 +113,47 @@ limit 15;
 | Kouen(Live Version)                         | Kouen(Live Version)                         | 2:20     |
 | Tsukiyuki ni mau hana no youni              | FOREST SNOW                                 | 2:19     |
 | NAMINORI www.                               | LOUD BEACH                                  | 2:19     |
+
+
+
+```sql
+select round(cast(h.notes as real) / h.duration_sec, 3) nps, h.notes, h.duration, s.remywiki_title, s.genre_romantrans, c.difficulty diff, c.level
+from charts c
+join songs s on c.song_id = s.id
+join hyrorre_charts h on c.hyrorre_page_path = h.page_path
+where h.notes is not null
+and h.duration_sec is not null
+and c.level >= 46
+order by nps
+limit 10;
+```
+|  nps  | notes | duration |     remywiki_title      | genre_romantrans  | diff | level |
+|-------|-------|----------|-------------------------|-------------------|------|-------|
+| 5.802 | 528   | 1:31     | Maritare!               | CLASSIC 6         | ex   | 47    |
+| 5.82  | 518   | 1:29     | GALAXY FOREST 11.6&12   | SCREEN            | h    | 46    |
+| 6.269 | 746   | 1:59     | Doll's sight            | CLASSIC 10        | ex   | 48    |
+| 6.669 | 807   | 2:01     | Hell? or Heaven?        | CLASSIC 9         | ex   | 49    |
+| 7.06  | 826   | 1:57     | Eien toiu na no biyaku  | PYRAMID           | ex   | 47    |
+| 7.112 | 633   | 1:29     | GALAXY FOREST 11.6&12   | SCREEN            | ex   | 49    |
+| 7.308 | 782   | 1:47     | Nishiazabu suidou kyoku | PERCUSSIVE 2      | ex   | 46    |
+| 7.716 | 1034  | 2:14     | Popperz Chronicle       | Popperz Chronicle | h    | 46    |
+| 7.85  | 942   | 2:00     | School Life             | KESHIGOMU         | ex   | 46    |
+| 7.958 | 955   | 2:00     | Omoide wo arigatou      | CLASSIC 11        | ex   | 49    |
+
+```sql
+...
+order by nps desc
+limit 10;
+```
+|  nps   | notes | duration |      remywiki_title       |   genre_romantrans   | diff | level |
+|--------|-------|----------|---------------------------|----------------------|------|-------|
+| 16.091 | 1947  | 2:01     | Oto                       | Oto                  | ex   | 50    |
+| 16.037 | 1748  | 1:49     | Schrodinger no neko       | TOY CONTEMPORARY     | ex   | 50    |
+| 15.517 | 1800  | 1:56     | ShinchoushinTION          | COREDUST BEAT        | ex   | 50    |
+| 14.964 | 1646  | 1:50     | MADSPEED kyoushintou      | MADSPEED kyoushintou | ex   | 49    |
+| 14.785 | 1789  | 2:01     | 25 o'clock the WORLD      | 25 o'clock the WORLD | ex   | 50    |
+| 14.742 | 1769  | 2:00     | Seimei no honoo matoite   | IMBOLC               | ex   | 50    |
+| 14.472 | 1780  | 2:03     | Shounen wa sora wo tadoru | MURAKUMO             | ex   | 50    |
+| 14.394 | 1828  | 2:07     | Tadoru kimi wo koete      | Tadoru kimi wo koete | ex   | 50    |
+| 14.387 | 1525  | 1:46     | Shuumatsu wo ou mono      | JUDGMENT             | ex   | 49    |
+| 14.294 | 1458  | 1:42     | Kodomo live               | WARABE STEP          | ex   | 48    |
