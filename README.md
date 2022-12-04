@@ -52,6 +52,33 @@ where artist like '%seiya%';
 
 
 ```sql
+select level, count(*) charts
+from charts
+where level >= 35
+group by level;
+```
+| level | charts |
+|-------|--------|
+| 35    | 107    |
+| 36    | 144    |
+| 37    | 167    |
+| 38    | 222    |
+| 39    | 192    |
+| 40    | 231    |
+| 41    | 229    |
+| 42    | 229    |
+| 43    | 200    |
+| 44    | 178    |
+| 45    | 195    |
+| 46    | 215    |
+| 47    | 189    |
+| 48    | 122    |
+| 49    | 69     |
+| 50    | 20     |
+
+
+
+```sql
 select c.difficulty, c.level, s.remywiki_title, s.genre_romantrans, h.notes
 from charts c
 join songs s on c.song_id = s.id
