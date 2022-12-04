@@ -79,19 +79,40 @@ group by level;
 
 
 ```sql
-select c.difficulty, c.level, s.remywiki_title, s.genre_romantrans, h.notes
-from charts c
-join songs s on c.song_id = s.id
-join hyrorre_charts h on c.hyrorre_page_path = h.page_path
-where h.notes >= 1537
-and c.level < 49
-order by c.level, c.difficulty;
+with l as (select * from labels where record_type = 'song' and value = 'upper')
+select genre_romantrans, count(*) count
+from songs s
+left join l on s.id = l.record_id
+where l.record_id is null
+group by genre_romantrans
+having count > 1
+order by count desc, genre_romantrans;
 ```
-| difficulty | level | remywiki_title | genre_romantrans | notes |
-|------------|-------|----------------|------------------|-------|
-| ex         | 47    | Hentai trilogy | CORE ROCK        | 1546  |
-| ex         | 48    | Setsujou danka | HIP ROCK 3       | 1550  |
-| ex         | 48    | Roman          | HIP ROCK 4       | 1604  |
+| genre_romantrans | count |
+|------------------|-------|
+| HAPPY HARDCORE   | 6     |
+| PROGRESSIVE      | 3     |
+| TECHNO POP       | 3     |
+| ANTHEM           | 2     |
+| BEAT ROCK        | 2     |
+| CANDY POP        | 2     |
+| CANDY RAVE       | 2     |
+| EUROBEAT         | 2     |
+| FUNK ROCK        | 2     |
+| GIRLS ROCK       | 2     |
+| HIPHOP           | 2     |
+| INFINITY         | 2     |
+| J-POP            | 2     |
+| J-R&B            | 2     |
+| LOUNGE POP       | 2     |
+| MIXTURE          | 2     |
+| PROGRE           | 2     |
+| PUNK             | 2     |
+| SKA              | 2     |
+| TRANCE           | 2     |
+| TRIBAL           | 2     |
+| VISUAL           | 2     |
+| Xmas PRESENTS    | 2     |
 
 
 
