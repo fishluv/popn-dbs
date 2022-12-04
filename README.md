@@ -1,5 +1,7 @@
 ```sql
-select genre_romantrans, remywiki_title, artist from songs where genre_romantrans like 'hyper%';
+select genre_romantrans, remywiki_title, artist
+from songs
+where genre_romantrans like 'hyper%';
 ```
 |  genre_romantrans  |       remywiki_title        |       artist       |
 |--------------------|-----------------------------|--------------------|
@@ -19,8 +21,12 @@ select genre_romantrans, remywiki_title, artist from songs where genre_romantran
 | HYPER JAPANESQUE   | Mugen no hikari             | TЁЯRA              |
 | HYPER CHINESE POP  | Toukarenjou                 | TЁЯRA              |
 
+
+
 ```sql
-select genre_romantrans, remywiki_title, artist from songs where artist like '%seiya%';
+select genre_romantrans, remywiki_title, artist
+from songs
+where artist like '%seiya%';
 ```
 |     genre_romantrans      |           remywiki_title           |              artist              |
 |---------------------------|------------------------------------|----------------------------------|
@@ -43,8 +49,16 @@ select genre_romantrans, remywiki_title, artist from songs where artist like '%s
 | Tabun, kiss kurai shiteru | Tabun, kiss kurai shiteru          | Kiyommy+Seiya                    |
 | Watchdog The Sleeper      | Watchdog The Sleeper               | BEMANI Sound Team "seiya-murai"  |
 
+
+
 ```sql
-select c.difficulty, c.level, s.remywiki_title, s.genre_romantrans, h.notes from charts c join songs s on c.song_id = s.id join hyrorre_charts h on c.hyrorre_page_path = h.page_path where h.notes >= 1537 and c.level < 49 order by c.level, c.difficulty;
+select c.difficulty, c.level, s.remywiki_title, s.genre_romantrans, h.notes
+from charts c
+join songs s on c.song_id = s.id
+join hyrorre_charts h on c.hyrorre_page_path = h.page_path
+where h.notes >= 1537
+and c.level < 49
+order by c.level, c.difficulty;
 ```
 | difficulty | level | remywiki_title | genre_romantrans | notes |
 |------------|-------|----------------|------------------|-------|
@@ -52,8 +66,15 @@ select c.difficulty, c.level, s.remywiki_title, s.genre_romantrans, h.notes from
 | ex         | 48    | Setsujou danka | HIP ROCK 3       | 1550  |
 | ex         | 48    | Roman          | HIP ROCK 4       | 1604  |
 
+
+
 ```sql
-select distinct s.remywiki_title, s.genre_romantrans, h.duration from charts c join songs s on c.song_id = s.id join hyrorre_charts h on c.hyrorre_page_path = h.page_path order by h.duration_sec desc limit 15;
+select distinct s.remywiki_title, s.genre_romantrans, h.duration
+from charts c
+join songs s on c.song_id = s.id
+join hyrorre_charts h on c.hyrorre_page_path = h.page_path
+order by h.duration_sec desc
+limit 15;
 ```
 |               remywiki_title                |              genre_romantrans               | duration |
 |---------------------------------------------|---------------------------------------------|----------|
