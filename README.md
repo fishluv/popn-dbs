@@ -191,4 +191,4 @@ limit 10;
 
 Thanks to Nagato, without whose omnimix tools none of this would be possible.
 
-All data is sourced from [Remywiki](https://remywiki.com), [Hyrorre](https://popn.hyrorre.com), or elsewhere.
+All data is sourced from [Remywiki](https://remywiki.com), [上級攻略 Wiki (JouKou Wiki)](https://popn.wiki), or elsewhere.
