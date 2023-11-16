@@ -10,7 +10,7 @@ group by level;
 ```
 
 | level | charts |
-|-------|--------|
+| ----- | ------ |
 | 35    | 107    |
 | 36    | 144    |
 | 37    | 167    |
@@ -28,8 +28,6 @@ group by level;
 | 49    | 69     |
 | 50    | 20     |
 
-
-
 ## Most common genres
 
 ```sql
@@ -44,7 +42,7 @@ order by count desc, genre_romantrans;
 ```
 
 | genre_romantrans | count |
-|------------------|-------|
+| ---------------- | ----- |
 | HAPPY HARDCORE   | 6     |
 | PROGRESSIVE      | 3     |
 | TECHNO POP       | 3     |
@@ -69,8 +67,6 @@ order by count desc, genre_romantrans;
 | VISUAL           | 2     |
 | Xmas PRESENTS    | 2     |
 
-
-
 ## All HYPER genres
 
 ```sql
@@ -79,8 +75,8 @@ from songs
 where genre_romantrans like 'hyper%';
 ```
 
-|  genre_romantrans  |       remywiki_title        |       artist       |
-|--------------------|-----------------------------|--------------------|
+| genre_romantrans   | remywiki_title              | artist             |
+| ------------------ | --------------------------- | ------------------ |
 | HYPER J-POP        | STARS                       | TЁЯRA              |
 | HYPER J-POP 2      | North Wind                  | TЁЯRA              |
 | HYPER J-POP 3      | 1/6billionth                | TЁЯRA              |
@@ -97,22 +93,20 @@ where genre_romantrans like 'hyper%';
 | HYPER JAPANESQUE   | Mugen no hikari             | TЁЯRA              |
 | HYPER CHINESE POP  | Toukarenjou                 | TЁЯRA              |
 
-
-
 ## Longest songs
 
 ```sql
-select distinct s.remywiki_title, s.genre_romantrans, h.duration
+select distinct s.remywiki_title, s.genre_romantrans, j.duration
 from charts c
 join songs s on c.song_id = s.id
-join hyrorre_charts h on c.hyrorre_page_path = h.page_path
-where h.duration_sec is not null
-order by h.duration_sec desc
+join jkwiki_charts j on c.jkwiki_page_path = j.page_path
+where j.duration_sec is not null
+order by j.duration_sec desc
 limit 10;
 ```
 
-|               remywiki_title                |              genre_romantrans               | duration |
-|---------------------------------------------|---------------------------------------------|----------|
+| remywiki_title                              | genre_romantrans                            | duration |
+| ------------------------------------------- | ------------------------------------------- | -------- |
 | Help me, ERINNNNNN!! -VENUS mix-            | Help me, ERINNNNNN!! -VENUS mix-            | 2:39     |
 | Pop'n Xmas 2004 ~denshi no utagoe~          | Xmas PRESENTS                               | 2:33     |
 | SDVX REMIX SELECTION for pop'n music vol.01 | SDVX REMIX SELECTION for pop'n music vol.01 | 2:33     |
@@ -128,12 +122,12 @@ limit 10;
 
 ```sql
 ...
-order by h.duration_sec
+order by j.duration_sec
 limit 10;
 ```
 
-|      remywiki_title       | genre_romantrans | duration |
-|---------------------------|------------------|----------|
+| remywiki_title            | genre_romantrans | duration |
+| ------------------------- | ---------------- | -------- |
 | Twin Bee ~Generation X~   | EUROBEAT         | 1:11     |
 | Happy man                 | GUITAR PUNK      | 1:12     |
 | Sweaty Guys               | KG               | 1:14     |
@@ -145,23 +139,21 @@ limit 10;
 | 321 STARS                 | TECHNO POP       | 1:21     |
 | I REALLY WANT TO HURT YOU | POPS             | 1:22     |
 
-
-
 ## Densest charts
 
 ```sql
-select round(cast(h.notes as real) / h.duration_sec, 3) nps, h.notes, h.duration, s.remywiki_title, s.genre_romantrans, c.difficulty diff, c.level
+select round(cast(j.notes as real) / j.duration_sec, 3) nps, j.notes, j.duration, s.remywiki_title, s.genre_romantrans, c.difficulty diff, c.level
 from charts c
 join songs s on c.song_id = s.id
-join hyrorre_charts h on c.hyrorre_page_path = h.page_path
-where h.notes is not null
-and h.duration_sec is not null
+join jkwiki_charts j on c.jkwiki_page_path = j.page_path
+where j.notes is not null
+and j.duration_sec is not null
 order by nps desc
 limit 10;
 ```
 
-|  nps   | notes | duration |      remywiki_title       |   genre_romantrans   | diff | level |
-|--------|-------|----------|---------------------------|----------------------|------|-------|
+| nps    | notes | duration | remywiki_title            | genre_romantrans     | diff | level |
+| ------ | ----- | -------- | ------------------------- | -------------------- | ---- | ----- |
 | 16.091 | 1947  | 2:01     | Oto                       | Oto                  | ex   | 50    |
 | 16.037 | 1748  | 1:49     | Schrodinger no neko       | TOY CONTEMPORARY     | ex   | 50    |
 | 15.517 | 1800  | 1:56     | ShinchoushinTION          | COREDUST BEAT        | ex   | 50    |
@@ -182,8 +174,8 @@ order by nps
 limit 10;
 ```
 
-|  nps  | notes | duration |     remywiki_title      | genre_romantrans  | diff | level |
-|-------|-------|----------|-------------------------|-------------------|------|-------|
+| nps   | notes | duration | remywiki_title          | genre_romantrans  | diff | level |
+| ----- | ----- | -------- | ----------------------- | ----------------- | ---- | ----- |
 | 5.802 | 528   | 1:31     | Maritare!               | CLASSIC 6         | ex   | 47    |
 | 5.82  | 518   | 1:29     | GALAXY FOREST 11.6&12   | SCREEN            | h    | 46    |
 | 6.269 | 746   | 1:59     | Doll's sight            | CLASSIC 10        | ex   | 48    |
